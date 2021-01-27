@@ -120,6 +120,7 @@ class WebBrowser(QWebEngineView):
         super().__init__()
         self._on_update = on_update
         self._auto_fill_rules = auto_fill_rules
+        self.page().profile().setHttpAcceptLanguage("en")
         cookie_store = self.page().profile().cookieStore()
         cookie_store.cookieAdded.connect(self._on_cookie_added)
         self.page().loadFinished.connect(self._on_load_finished)
